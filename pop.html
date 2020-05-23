@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kalar Place Website</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    #map {
+      height: 98%;
+      width: 100%;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="fifie.html">Five Point</a></li>
+    <li><a href="getimagw.html">Geotag Image</a></li>
+    <li><a href="route.html">Direction</a></li>
+    <li><a href="image360.html">360</a></li>
+    <li><a class="active" href="pop.html">Interactive Map</a></li>
+
+  </ul>
+  <div id="map"></div>
+  <!-- <script type="text/javascript" src="tur.js"></script>
+  <script type="text/javascript" src="syr.js"></script>
+  <script type="text/javascript" src="ir.js"></script> -->
+  <script type="text/javascript" src="info.js"></script>
+
+  <script type="text/javascript">
+    //syr
+    var city = [];
+
+    // var sur = ff();
+    // // iran
+    // var iran = mm();
+    // //tur
+    // var turky = tt();
+    ///iraq
+    var iraq = f1();
+    // city = city.concat(sur);
+    // city = city.concat(iran);
+    // city = city.concat(turky);
+    city = city.concat(iraq);
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 6,
+        center: {
+          lng: 46.1422576904298,
+          lat: 32.6470756530763,
+        },
+      });
+
+      var tempCity = Array();
+      var infowindow_polygon_1 = Array();
+      var color = "#00FF00";
+      for (let index = 0; index < city.length; index++) {
+        console.log(index);
+
+        var triangleCoords = city[index][2];
+        // city = city.concat(sur);
+        // city = city.concat(iran);
+        // city = city.concat(turky);
+        // city = city.concat(iraq);
+
+        // if (index < sur.length - 1) {
+        //   color = "#FF0000";
+        // }
+        // if (index > sur.length - 1 && index < sur.length + iran.length - 1) {
+        //   color = "#00FF00";
+        // }
+        // if (
+        //   index > sur.length + iran.length - 1 &&
+        //   index < sur.length + iran.length + turky.length - 1
+        // ) {
+        //   color = "#0000FF";
+        // }
+        // if (index > sur.length + iran.length + turky.length - 1) {
+        //   color = "#000F00";
+        // }
+        var bermudaTriangle = new google.maps.Polygon({
+          paths: triangleCoords,
+          strokeColor: "#FF0000",
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: color,
+          fillOpacity: 0.35,
+        });
+        tempCity.push(bermudaTriangle);
+        infowindow_polygon_1.push(
+          new google.maps.InfoWindow({
+            content:
+              "<div height: 10px; width: 50><p>" +
+              city[index][0] +
+              "</p><p>" +
+              city[index][1] +
+              "</p></div>",
+          })
+        );
+        bermudaTriangle.setMap(map);
+        tempCity[index].addListener("mouseover", function (event) {
+          infowindow_polygon_1[index].setPosition(event.latLng);
+          infowindow_polygon_1[index].open(map);
+          this.setOptions({
+            fillOpacity: 0,
+          });
+        });
+        tempCity[index].addListener("mouseout", function (event) {
+          this.setOptions({
+            fillOpacity: 0.35,
+          });
+          infowindow_polygon_1[index].close(map);
+        });
+      }
+      // bermudaTriangle.addListener("mouseover", function () {
+      //   bermudaTriangle.fillOpacity = 1;
+      //
+      // });
+      // bermudaTriangle.addListener("mouseout", function () {
+      //   bermudaTriangle.fillOpacity = 0;
+      // });
+      // bermudaTriangle.addListener("click", function (e) {
+      //
+
+      //   //   placeMarkerAndPanTo(e.latLng, map);
+      // });
+    }
+
+    function placeMarkerAndPanTo(latLng, map) {
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+      });
+      map.panTo(latLng);
+    }
+  </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhn063Enw_pmfiO5jEQVzARv9eptxWloQ&libraries=places&callback=initMap"></script>
+</body>
+
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div id="map-canvas"></div>
+  <script>
+    var map;
+
+    function initialize() {
+      var myOptions = {
+        zoom: 2,
+        center: new google.maps.LatLng(10, 0),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      // initialize the map
+      map = new google.maps.Map(document.getElementById('map-canvas'),
+        myOptions);
+
+      // these are the map styles
+      var styles = [{
+          stylers: [{
+              hue: "#00ffe6"
+            },
+            {
+              saturation: -20
+            }
+          ]
+        },
+        {
+          featureType: "landscape",
+          stylers: [{
+              hue: "#ffff66"
+            },
+            {
+              saturation: 100
+            }
+          ]
+        }, {
+          featureType: "road",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "administrative.land_parcel",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "administrative.locality",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "administrative.neighborhood",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "administrative.province",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "landscape.man_made",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "landscape.natural",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "poi",
+          stylers: [{
+            visibility: "off"
+          }]
+        }, {
+          featureType: "transit",
+          stylers: [{
+            visibility: "off"
+          }]
+        }
+      ];
+
+      map.setOptions({
+        styles: styles
+      });
+
+      // Initialize JSONP request
+      var script = document.createElement('script');
+      var url = ['https://www.googleapis.com/fusiontables/v1/query?'];
+      url.push('sql=');
+      var query = 'SELECT name, kml_4326 FROM ' +
+        '1foc3xO9DyfSIF6ofvN0kp2bxSfSeKog5FbdWdQ';
+      var encodedQuery = encodeURIComponent(query);
+      url.push(encodedQuery);
+      url.push('&callback=drawMap');
+      url.push('&key=AIzaSyAm9yWCV7JPCTHCJut8whOjARd7pwROFDQ');
+      script.src = url.join('');
+      var body = document.getElementsByTagName('body')[0];
+      body.appendChild(script);
+    }
+
+    function drawMap(data) {
+      var rows = data['rows'];
+      for (var i in rows) {
+        if (rows[i][0] != 'Antarctica') {
+          var newCoordinates = [];
+          var geometries = rows[i][1]['geometries'];
+          if (geometries) {
+            for (var j in geometries) {
+              newCoordinates.push(constructNewCoordinates(geometries[j]));
+            }
+          } else {
+            newCoordinates = constructNewCoordinates(rows[i][1]['geometry']);
+          }
+          var country = new google.maps.Polygon({
+            paths: newCoordinates,
+            strokeColor: '#ff9900',
+            strokeOpacity: 1,
+            strokeWeight: 0.3,
+            fillColor: '#ffff66',
+            fillOpacity: 0,
+            name: rows[i][0]
+          });
+          google.maps.event.addListener(country, 'mouseover', function () {
+            this.setOptions({
+              fillOpacity: 0.4
+            });
+          });
+          google.maps.event.addListener(country, 'mouseout', function () {
+            this.setOptions({
+              fillOpacity: 0
+            });
+          });
+          google.maps.event.addListener(country, 'click', function () {
+            alert(this.name);
+          });
+
+          country.setMap(map);
+        }
+      }
+    }
+
+    function constructNewCoordinates(polygon) {
+      var newCoordinates = [];
+      var coordinates = polygon['coordinates'][0];
+      for (var i in coordinates) {
+        newCoordinates.push(
+          new google.maps.LatLng(coordinates[i][1], coordinates[i][0]));
+      }
+      return newCoordinates;
+    }
+
+   
+  </script>
+</body>
+
+</html> -->

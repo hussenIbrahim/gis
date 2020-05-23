@@ -13,7 +13,7 @@
 
 
     <script>$(document).ready(function () {
-            $("#drawing button").click(function (e) {
+            $("i").click(function (e) {
                 var isActive = $(this).hasClass('active');
                 if (!isActive) {
                     $('.active').removeClass('active');
@@ -22,16 +22,20 @@
                 }
             });
         });</script>
+    <style>
+
+    </style>
 </head>
 
 <body>
     <ul>
-        <li><a href="#home">Home</a></li>
+        <li><a href="index.html">Home</a></li>
+
         <li><a href="fifie.html">Five Point</a></li>
-        <li><a href="getimagw.html">GeoTag Umage</a></li>
+        <li><a href="getimagw.html">Geotag Image</a></li>
         <li><a class="active" href="route.html">Direction</a></li>
-        <li><a href="getimagw.html">360</a></li>
-        <li><a href="getimagw.html">Interactive Map</a></li>
+        <li><a href="image360.html">360</a></li>
+        <li><a href="pop.html">Interactive Map</a></li>
 
     </ul>
     <div class="row">
@@ -40,22 +44,21 @@
         <div class="right">
 
             <input type="text" class="textInput" placeholder="  source" id="firtsInput">
-            <!-- <button id="swap" class="swap"> -->
             <i id="swap" class='swap fas fa-exchange-alt' style='font-size:25px;color:blue'></i>
 
-            <!-- </button> -->
             <input type="text" class="textInput" placeholder="  distination" id="seconedInput">
             <br>
 
             <div id="drawing">
-                <button id="car" class="small-button active"> <i class="material-icons"
-                        style="color:black">directions_car</i>
-                </button>
-                <button id="walk" class="small-button"> <i id="small-button" class="material-icons"
-                        style="color:black">directions_walk</i>
-                </button>
-                <button id="cyc" class="small-button"><i class="material-icons" style="color:black">motorcycle</i>
-                </button>
+                <i id="car" class="material-icons active" style="font-size:25px;color:black">directions_car</i>
+
+
+                <i id="walk" class="material-icons" style="font-size:25px;color:black">directions_walk</i>
+
+
+                <i id="cyc" class="material-icons" style="font-size:25px;color:black">motorcycle</i>
+
+
             </div>
 
 

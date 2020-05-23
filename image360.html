@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Image 360</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .fcol {
+            grid-area: left;
+
+        }
+
+        .sccol {
+            grid-area: right;
+        }
+
+        @media screen and (min-width: 850px) {
+            .divmain {
+                display: grid;
+                grid-template-areas: 'left left left left left left left right';
+                grid-gap: 5px;
+                /* background-color:; */
+                padding: 5px;
+
+            }
+
+            .sccol {
+                margin-top: -20px;
+                margin-left: -40px;
+                padding-right: -60px;
+            }
+
+            a img {
+                margin-right: 0px;
+            }
+        }
+
+        .divmain>div {
+            text-align: center;
+            padding: 5px 0;
+            font-size: 30px;
+        }
+
+        @media screen and (max-width: 849px) {
+            .divmain {
+                display: grid;
+                grid-template-areas: 'right right right right '
+                    'left left left left';
+                grid-gap: 10px;
+                background-color: darkslategrey;
+                padding: 10px;
+
+            }
+        }
+
+        a img {
+            height: 170px;
+            width: 40%;
+            border: 2px solid white;
+            border-radius: 4px;
+            margin-right: -50px;
+        }
+
+        .sccol {
+            overflow: auto;
+            height: 540px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a  href="index.html">Home</a></li>
+        <li><a href="fifie.html">Five Point</a></li>
+        <li><a href="getimagw.html">Geotag Image</a></li>
+        <li><a href="route.html">Direction</a></li>
+        <li><a class="active" href="image360.html">360</a></li>
+        <li><a href="pop.html">Interactive Map</a></li>
+
+    </ul>
+    <div class="divmain">
+        <div class="fcol">
+            <iframe src="" frameborder="2" height="550" width="100%" name="freamim" scrolling="no" gesture="media"
+                allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="sccol">
+            <!-- <p>Hawler 360° Image</p> -->
+            <a href="https://momento360.com/e/u/29b9b64106fc47069f665b396cddc118?utm_campaign=embed&utm_source=other&utm_medium=other&heading=0&pitch=0&field-of-view=75"
+                target="freamim"><img src="t8lb1cr1-a-view-of-a-beach.jpeg.jpg" alt=""></a>
+            <br><br>
+            <a href="https://momento360.com/e/u/29b9b64106fc47069f665b396cddc118?utm_campaign=embed&utm_source=other&utm_medium=other&heading=0&pitch=0&field-of-view=75"
+                target="freamim"><img src="julien-gauthier-buggy-story-03.jpg" alt=""></a>
+            <br>
+            <a href="https://momento360.com/e/u/29b9b64106fc47069f665b396cddc118?utm_campaign=embed&utm_source=other&utm_medium=other&heading=0&pitch=0&field-of-view=75"
+                target="freamim"><img src="u31061c94-a-train-that-is-sitting-on-a-chair.jpeg.jpg" alt=""></a>
+            <br>
+            <a href="https://momento360.com/e/u/29b9b64106fc47069f665b396cddc118?utm_campaign=embed&utm_source=other&utm_medium=other&heading=0&pitch=0&field-of-view=75"
+                target="freamim"><img src="u31061c94-a-train-that-is-sitting-on-a-chair.jpeg.jpg" alt=""></a>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
