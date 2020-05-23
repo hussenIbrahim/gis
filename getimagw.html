@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 8 image</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        #row {
+            height: 600px;
+            position: relative;
+        }
+
+        #float {
+            position: absolute;
+            top: 55px;
+            left: 0px;
+        }
+
+        .first {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+        .second {
+            width: 100px;
+            height: 600px;
+            background: blanchedalmond;
+            display: none;
+            padding: 10px;
+
+        }
+
+        #routeDiv {
+            background: rgb(205, 255, 213);
+
+            width: 100%;
+            height: 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="fifie.html">Five Point</a></li>
+        <li><a class="active" href="getimagw.html">GeoTag Umage</a></li>
+        <li><a href="route.html">Direction</a></li>
+        <li><a href="getimagw.html">360</a></li>
+        <li><a href="getimagw.html">Interactive Map</a></li>
+
+    </ul>
+    <div class="row">
+        <div id="map">
+        </div>
+        <div id="float">
+            <div class="first"></div>
+            <div class="second">
+                <h2></h2>
+                <a href="2.jpg" target="_blank"> <img id="myimage" src="2.jpg" alt="" srcset="" width="100%"
+                        height="28%">
+                </a>
+                <br>
+                <p></p>
+                <button id="back">close</button>
+                </button>
+            </div>
+        </div>
+        <script>
+            let index = Array();
+            var map;
+            function initMap() {
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 36.182266,
+                        lng: 43.990748
+                    },
+                    zoom: 13,
+                    fullscreenControl: false
+                });
+
+
+                var locations = [
+                    [36.209537, 44.044643],
+                    [36.196108, 44.064349],
+                    [36.181167, 44.002612],
+                    [36.184757, 44.011973],
+                    [36.189506, 44.009559],
+                    [36.191828, 44.009784],
+                    [36.182976, 44.026318],
+                    [36.201076, 44.018648]
+                ];
+
+
+                $(window).resize(function () {
+                    $(".second").width($('body').width() / 3);
+
+                });
+                let j = 0
+                for (i = 0; i < locations.length; i++) {
+                    let marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                        map: map,
+                        id: i
+                    });
+                    const title = [
+                        "FAMILY MALL ERBIL", "MAJIDI MALL", "Shanadar Park", "Downtown Erbil", "Machko", "Citadel Town of Erbil", "PAR hospital", "Jalil Khayat Mosque"
+                    ];
+                    const des = [
+                        "Family Mall – 100m Street – Erbil  Opened its doors in Dec 2010 the most modern shopping mall in Iraq with over 130 shops to cater for all customer needs, with the anchor tenant Carrefour, open since Jan 2011. Situated in a prime location on 100m street in the heart of Erbil city center, alongside the Family Fun amusement park the location offers something for all the family",
+                        "Kasnazan Road , Erbil  Majidi Mall, as Iraq’s most entertaining shopping Centre of Iraq,Offer its visitors an optimal shopping experience with 67 shops over 3 floors with car parking for 2000 Cars.””The centre is home to 6D Cinema, delicious food and limitless entertainment in Game Land,all in one place under the roof of the Majidi Mall shopping centre,which presents a new way of living",
+                        "Shanadar Park is south of the Erbil Citadel, behind al-Sawwaf Mosque. It was constructed according to a modern design and contains several play areas for children. a hall for local art exhibitions built in the form of the renowned Shanadar Cave lies at the center of the park.",
+                        "Downtown Erbil is a mixed-use project featuring twin towers, residential and commercial space, hotels, malls and parks covering 541,000 square metres, ",
+                        "the most famous café in Erbil. Bituated beneath the citadel for around 80 years, Machko teahouse (chaikhana in Kurdish) has been a part of the recent history of the city, and the life stories of its residents and visitors.",
+                        'the Citadel Town of Erbil, or Qalat Erbil, is an impressive elevated settlement that has been inhabited continuously for millennia.  Although its exact origins cannot be traced with certainty, there are strong archaeological indications and finds, however, to indicate that it goes back to some 6000 years.  The fortified town itself must have been present during to the Assyrian Period (1365-612 BC), or some 3000 years ago.'
+                        ,
+                        "60m Street, Mamostayan Qr ,is prepared to be a centre of excellence dedicated to provision of the highest quality clinical care to patients in Erbil and lraq. Our medical staff, over 50 consultant physicians and surgeons, together with our outstanding nursing staff and all the other healthcare professions at Par Hospital makes it their mission to improve the health and wellbeing of patients and communities arguments",
+                        "Jalil Khayat Mosque is a Sunni Islamic mosque in Erbil, Iraqi Kurdistan; the largest in the city. The mosque was begun by Jalil Khayat who died in 2005; and the mosque was completed in 2007 by his sons in memory of their father ,it holds about 1,500 to 2,000 people"];
+
+                    google.maps.event.addListener(marker, 'click', (function () {
+                        console.log(marker.get('id'));
+
+
+                        $(".second").show().animate({ width: $('body').width() / 3 }, 400);
+
+                        $("#myimage").attr("src", (marker.get('id') + 2) + ".jpg");
+                        $("h2").text(title[marker.get('id')]);
+                        $("a").attr("href", (marker.get('id') + 2) + ".jpg");
+
+                        $("p").text(des[marker.get('id')]);
+
+                        $(".first").animate({ width: 0, left: 0 }, 400).promise().done(function () {
+                            $(this).hide();
+                            second();
+                        });
+                    }));
+
+                    index.push(i);
+
+
+                }
+
+                function second() {
+                    $("#back").one('click', function () {
+                        $(".second").animate({ width: 0 }, 400).promise().done(function () {
+                            $(this).hide();
+                        });
+                        $(".first").show().animate({ width: 0, left: 0 }, 400);
+                    });
+                }
+
+
+            }
+        </script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhn063Enw_pmfiO5jEQVzARv9eptxWloQ&libraries=places&callback=initMap"
+            async defer>
+            </script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #map {
+            width: 100%;
+
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a class="active" href="fifie.html">Five Point</a></li>
+        <li><a href="getimagw.html">GeoTag Umage</a></li>
+        <li><a href="route.html">Direction</a></li>
+        <li><a href="getimagw.html">360</a></li>
+        <li><a href="getimagw.html">Interactive Map</a></li>
+
+    </ul>
+    <div class="">
+
+        <div id="map">
+
+        </div>
+
+    </div>
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {
+                    lat: 36.179260,
+                    lng: 44.029574,
+                },
+                zoom: 15,
+
+
+                // set the zoom level manually
+                zoomControl: true,
+
+
+
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_BOTTOM
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+            var locations = [
+                [36.183091, 44.026224],
+                [36.188808, 44.041695],
+                [36.188119, 44.038094],
+                [36.191164, 44.009152],
+                [36.186526, 43.984362]
+            ];
+
+            var infowin = [
+                ['<div id="content">' +
+                    '<h1 id="firstHeading" class="firstHeading">PAR hospital</h1>' +
+                    '<div id="bodyContent">' +
+                    ' is prepared to be a centre of excellence dedicated to provision of the highest quality clinical care to patients in Erbil and lraq. Our medical staff, over 50 consultant physicians and surgeons, together with our outstanding nursing staff and all the other healthcare professions at Par Hospital makes it their mission to improve the health and wellbeing of patients and communities'
+
+                    +
+                    '</p>' +
+                    '<p>Offiecal Website    <a href="http://parhospital.org/" target="blank">' +
+                    'Par Hospital</a> ' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>'
+                ],
+                ['<div id="content">' +
+                    '<h1 id="firstHeading" class="firstHeading">DELTA Net</h1>' +
+                    '<div id="bodyContent">' +
+                    'DELTA in IRAQ is an independent company established in 2003, with headquarters in the UK, Iraq and UAE. Delta communications is run by professionals who have many years of experience in the management and communications industry and have sound knowledge of the international business market with more than 300 employees. The core focus to date has been the distribution of telecommunications products and services. ' +
+                    +
+                    '</p>' +
+                    '<p>Offiecal Website    <a href="http://deltacomms.net/" target="blank">' +
+                    'DELTA net</a> ' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>'
+                ],
+
+
+                ['<div id="content">' +
+                    '<h1 id="firstHeading" class="firstHeading">Awamedica Company</h1>' +
+                    '<div id="bodyContent">' +
+                    ' Awamedica is a privately held pharmaceuticals company located in Erbil, Iraq. The company is in every respect an international company. It is built with Swedish expertise and with Swedish quality. Awamedica has a partnership with the French multinational company Sanofi, manufacturing several of Sanofi’s most well-known products for the Iraqi market.' +
+                    '</p>' +
+                    '<p>Offiecal Website    <a href="https://awamedica.com/" target="blank">' +
+                    'Awamedica </a> ' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>'
+                ],
+                ['<div id="content">' +
+                    '<h1 id="firstHeading" class="firstHeading">Erbil Citadel</h1>' +
+                    '<div id="bodyContent">' +
+
+                    'the Citadel Town of Erbil, or Qalat Erbil, is an impressive elevated settlement that has been inhabited continuously for millennia.  Although its exact origins cannot be traced with certainty, there are strong archaeological indications and finds, however, to indicate that it goes back to some 6000 years.  The fortified town itself must have been present during to the Assyrian Period (1365-612 BC), or some 3000 years ago.' +
+                    '</p>' +
+                    '<p>Offiecal Website    <a href="http://www.erbilcitadel.org/" target="blank">' +
+                    'Erbil Citadel </a> ' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>'
+                ],
+                ['<div id="content">' +
+                    '<h1 id="firstHeading" class="firstHeading">Erbil International Fair</h1>' +
+                    '<div id="bodyContent">' +
+                    'Erbil International Fair is a specialized exhibition to display the products of companies and the services they provide and provide job opportunities for people and allows inventors and innovators to display their work in order to receive funding to develop their skills and provide the best' +
+                    '</p>' +
+                    '<p>Offiecal Website    <a href=" https://www.erbilfair.com/" target="blank">' +
+                    'Erbil International Fair </a> ' +
+                    '</p>' +
+                    '</div>' +
+                    '</div>'
+                ],
+
+            ];
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+                    map: map
+                });
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(infowin[i][0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhn063Enw_pmfiO5jEQVzARv9eptxWloQ&libraries=places&callback=initMap">
+        </script>
+</body>
+
+</html>

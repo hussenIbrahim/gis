@@ -1,0 +1,83 @@
+.row {
+    /* background-color: #ffe6e6; */
+    display: flex;
+    height: 100%;
+
+}
+
+.fas {
+    transform: rotate(90deg);
+
+}
+
+#firtsInput {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+
+
+#seconedInput {
+    width: 75%;
+    margin-left: 12.5%;
+    margin-top: 5px;
+}
+
+#map {
+    width: 75%;
+
+    height: 100vh;
+}
+
+
+
+#drawing {
+
+    width: 50%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.right {
+    background-color: #e6f2ff;
+    width: 25%;
+    padding: 10px;
+    height: 100vh;
+}
+
+.active {
+    background: #4dd2ff;
+    /* color: #34eb49; */
+}
+
+.swap {
+    /* margin-top: 25px; */
+    margin-left: 75%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffe6e6;
+    color: #ffe6e6;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #ffcccc;
+}
