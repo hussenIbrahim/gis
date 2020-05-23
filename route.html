@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dirctions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <script>$(document).ready(function () {
+            $("#drawing button").click(function (e) {
+                var isActive = $(this).hasClass('active');
+                if (!isActive) {
+                    $('.active').removeClass('active');
+                    $(this).addClass('active');
+                } else {
+                }
+            });
+        });</script>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="fifie.html">Five Point</a></li>
+        <li><a href="getimagw.html">GeoTag Umage</a></li>
+        <li><a class="active" href="route.html">Direction</a></li>
+        <li><a href="getimagw.html">360</a></li>
+        <li><a href="getimagw.html">Interactive Map</a></li>
+
+    </ul>
+    <div class="row">
+        <div id="map">
+        </div>
+        <div class="right">
+
+            <input type="text" class="textInput" placeholder="  source" id="firtsInput">
+            <!-- <button id="swap" class="swap"> -->
+            <i id="swap" class='swap fas fa-exchange-alt' style='font-size:25px;color:blue'></i>
+
+            <!-- </button> -->
+            <input type="text" class="textInput" placeholder="  distination" id="seconedInput">
+            <br>
+
+            <div id="drawing">
+                <button id="car" class="small-button active"> <i class="material-icons"
+                        style="color:black">directions_car</i>
+                </button>
+                <button id="walk" class="small-button"> <i id="small-button" class="material-icons"
+                        style="color:black">directions_walk</i>
+                </button>
+                <button id="cyc" class="small-button"><i class="material-icons" style="color:black">motorcycle</i>
+                </button>
+            </div>
+
+
+
+            <br>
+            <p id="dur"></p>
+            <p id="dis"></p>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhn063Enw_pmfiO5jEQVzARv9eptxWloQ&libraries=places&callback=initMap"
+        async defer>
+        </script>
+</body>
