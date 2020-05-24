@@ -13,7 +13,7 @@
 
 
     <script>$(document).ready(function () {
-            $("i").click(function (e) {
+            $("#drawing button").click(function (e) {
                 var isActive = $(this).hasClass('active');
                 if (!isActive) {
                     $('.active').removeClass('active');
@@ -23,7 +23,9 @@
             });
         });</script>
     <style>
-
+        button {
+            border: none;
+        }
     </style>
 </head>
 
@@ -44,21 +46,22 @@
         <div class="right">
 
             <input type="text" class="textInput" placeholder="  source" id="firtsInput">
+            <!-- <button id="swap" class="swap"> -->
             <i id="swap" class='swap fas fa-exchange-alt' style='font-size:25px;color:blue'></i>
 
+            <!-- </button> -->
             <input type="text" class="textInput" placeholder="  distination" id="seconedInput">
             <br>
 
             <div id="drawing">
-                <i id="car" class="material-icons active" style="font-size:25px;color:black">directions_car</i>
-
-
-                <i id="walk" class="material-icons" style="font-size:25px;color:black">directions_walk</i>
-
-
-                <i id="cyc" class="material-icons" style="font-size:25px;color:black">motorcycle</i>
-
-
+                <button id="car" class="small-button active"> <i class="material-icons"
+                        style="color:black">directions_car</i>
+                </button>
+                <button id="walk" class="small-button"> <i id="small-button" class="material-icons"
+                        style="color:black">directions_walk</i>
+                </button>
+                <button id="cyc" class="small-button"><i class="material-icons" style="color:black">motorcycle</i>
+                </button>
             </div>
 
 
