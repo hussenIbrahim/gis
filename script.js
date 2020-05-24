@@ -52,14 +52,14 @@ function initMap() {
   secplaceAutocomplete.addListener("place_changed", function () {
     var place = secplaceAutocomplete.getPlace();
 
-    addMarker(place.geometry.location, 2);
+    addMarker(place.geometry.location, );
     map.setCenter(place.geometry.location);
   });
   map.addListener("click", function (e) {
     if (!startMarker) {
       addMarker(e.latLng, 1);
     } else {
-      addMarker(e.latLng, 2);
+      addMarker(e.latLng, );
     }
   });
   var geocoder = new google.maps.Geocoder();
@@ -187,7 +187,7 @@ function initMap() {
 
       temp = startMarker.position;
       var temp2 = endMarker.position;
-      addMarker(temp, 2);
+      addMarker(temp, );
 
       addMarker(temp2, 1);
       drawPolyLine();
