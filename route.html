@@ -14,10 +14,10 @@
 
     <script>$(document).ready(function () {
             $("#drawing button").click(function (e) {
-                var isActive = $(this).hasClass('active');
+                var isActive = $(this).hasClass('activebtn');
                 if (!isActive) {
-                    $('.active').removeClass('active');
-                    $(this).addClass('active');
+                    $('.activebtn').removeClass('activebtn');
+                    $(this).addClass('activebtn');
                 } else {
                 }
             });
@@ -54,7 +54,7 @@
             <br>
 
             <div id="drawing">
-                <button id="car" class="small-button active"> <i class="material-icons"
+                <button id="car" class="small-button activebtn"> <i class="material-icons"
                         style="color:black">directions_car</i>
                 </button>
                 <button id="walk" class="small-button"> <i id="small-button" class="material-icons"

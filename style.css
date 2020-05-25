@@ -57,6 +57,11 @@ body {
     /* color: #34eb49; */
 }
 
+.activebtn {
+    background: #4dd2ff;
+    /* color: #34eb49; */
+}
+
 .swap {
     /* margin-top: 25px; */
     margin-left: 75%;
